@@ -1,12 +1,20 @@
+/*todo:
+1.center buttons
+2.add health guages
+3. Since there aren't enough gifs for each character animation each attack style will be pieced together using a sprite stylesheet and the steps() funciton in css
+*/
 @import url("https://fonts.googleapis.com/css?family=VT323");
 body {
   margin: 0;
   padding: 0;
   background-color: black;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
   flex-flow: column nowrap;
-  justify-content: center;
-}
+  justify-content: center; }
 
 .container.stage {
   margin: 0 auto;
@@ -21,45 +29,54 @@ body {
   background-repeat: no-repeat;
   height: 30%;
   width: 100%;
-  border: 1px solid red;
-}
+  border: 1px solid red; }
 
 .container.health-gauge {
   margin-top: 1em;
   align-self: center;
   border: 1px solid purple;
   height: 40%;
-  width: 90%;
-}
+  width: 90%; }
+  .container.health-gauge .health-gauge.hero {
+    margin: 0;
+    float: left;
+    padding: .3em;
+    background-color: green;
+    width: 45%; }
+  .container.health-gauge .health-gauge.enemy {
+    float: right;
+    background-color: green;
+    padding: .5em;
+    width: 45%; }
 
 .container.fighters {
   align-self: center;
   margin: 9em 0 1em 0;
-  /*   display: grid;
-  grid-template-rows:auto;
-  grid-template-column: 1fr 1fr 1fr 1fr; */
   border: 1px solid yellow;
   width: 90%;
-  height: 20%;
-}
+  height: 20%; }
 
 .container.controls {
   display: block;
   margin: 0 auto;
   width: 80%;
   padding: 2em 1em;
-  border: 1px solid orange;
-}
+  border: 1px solid orange; }
 
-#hero {
-  /*   grid-row:1;
-  grid-column:1; */
+.hero {
+  float: left;
+  width: 200px;
+  border: 1px solid green; }
+
+.hero-attacking {
   float: left;
   width: 200px;
   border: 1px solid green;
-}
+  -webkit-animation: attack 0.3s;
+  animation: attack 0.3s; }
 
 .herobtn {
+  text-align: center;
   margin: 2% 2%;
   width: auto;
   height: 50px;
@@ -67,46 +84,42 @@ body {
   color: white;
   text-transform: uppercase;
   font: 2em "VT323", monospace;
-  border: 3px dotted white;
-}
-.enemy {
-  /*   grid-row:1;
-  grid-column: 4; */
+  border: 3px dotted white; }
+  .herobtn:hover {
+    cursor: pointer;
+    animation: blink .5s infinite alternate; }
+
+.enemy-sprite {
   float: right;
   width: 225px;
-  transform: scaleX(-1);
   border: 1px solid blue;
-}
-
-.hero-attacking {
-  -webkit-animation: attack 0.3s;
-  animation: attack 0.3s;
-}
+  transform: scaleX(-1); }
 
 @-webkit-keyframes attack {
   0% {
-    transform: translateX(-30px);
-  }
+    transform: translateX(-30px); }
   25% {
-    transform: translateX(0px);
-  }
+    transform: translateX(0px); }
   50% {
-    transform: translateX(440px);
-  }
+    transform: translateX(440px); }
   100% {
-    transform: translateX(0px);
-  }
-}
+    transform: translateX(0px); } }
 @keyframes attack {
   0% {
-    transform: translateX(-30px);
-  }
+    transform: translateX(-30px); }
   50% {
-    transform: translateX(440px);
-  }
+    transform: translateX(440px); }
   100% {
-    transform: translateX(0px);
-  }
-}
+    transform: translateX(0px); } }
+@keyframes rotate {
+  from {
+    border: 3px dotted white; }
+  to {
+    border: 3px dashed white; } }
+@keyframes blink {
+  from {
+    color: white; }
+  to {
+    color: black; } }
 
 /*# sourceMappingURL=style.css.map */
