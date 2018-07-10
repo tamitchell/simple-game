@@ -1,0 +1,59 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>A Study of Pokemon Mechanics</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div class="container stage">
+
+        <div class="container health-gauge">
+
+            <div class="health-gauge hero">
+                <span class="health-bar hero">
+        <span class="health-progress hero"></span></span>
+            </div>
+            <div class="health-gauge enemy">
+                <span class="health-bar enemy">
+        <span class="health-progress enemy"></span>
+                </span>
+            </div>
+        </div>
+
+        <div class="container fighters">
+            <img id="hero" src="https://i.giphy.com/media/11pR7Vr26lokVi/200w.gif" class="hero" />
+
+            <img id="enemy" src="https://78.media.tumblr.com/tumblr_m3u9txydOt1rptf33o1_500.gif" class="enemy-sprite" />
+        </div>
+
+    </div>
+
+    <!---Attack Bar-->
+
+    <div class="container controls">
+
+        <button id="attackbtn" class="herobtn" onclick="attack()">Attack</button>
+
+        <button id="protect" class="herobtn" onclick="protect()">Protect</button>
+
+        <button id="finalFlash" class="herobtn" onclick="attackFlash()">Final Flash</button>
+
+        <button id="kamehameha" class="herobtn" onclick="attackKame()">Kamehameha</button>
+
+    </div>
+    <script src="main.js"></script>
+    <script>
+        <!-- JS on the page -->
+    </script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+/*todo:
+1.center buttons
+2.add health guages
+3. Since there aren't enough gifs for each character animation each attack style will be pieced together using a sprite stylesheet and the steps() funciton in css
+*/
+
+@import url('https://fonts.googleapis.com/css?family=VT323');
+
+@mixin flex {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+}
+
+$button-font: 2em 'VT323',
+monospace;
+
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    @include flex;
+}
+
+.container.stage {
+    margin: 0 auto;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-content: center;
+    background-image: url("https://data.whicdn.com/images/304075390/original.gif");
+    /*Please tag artist*/
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 30%;
+    width: 100%;
+    border: 1px solid red;
+}
+
+.container.health-gauge {
+    margin-top: 1em;
+    align-self: center;
+    border: 1px solid purple;
+    height: 40%;
+    width: 90%;
+    .health-gauge.hero {
+        margin: 0;
+        float: left;
+        padding: .3em;
+        background-color: green;
+        width: 45%;
+    }
+    .health-gauge.enemy {
+        float: right;
+        background-color: green;
+        padding: .3em;
+        width: 45%;
+    }
+}
+
+.container.fighters {
+    align-self: center;
+    margin: 9em 0 1em 0;
+    border: 1px solid yellow;
+    width: 90%;
+    height: 20%;
+}
+
+.container.controls {
+    display: block;
+    margin: 0 auto;
+    width: 80%;
+    padding: 2em 1em;
+    border: 1px solid orange;
+}
+
+.hero {
+    float: left;
+    width: 200px;
+    border: 1px solid green;
+}
+
+.hero-attacking {
+    float: left;
+    width: 200px;
+    border: 1px solid green;
+    -webkit-animation: attack 0.3s;
+    animation: attack 0.3s;
+}
+
+.herobtn {
+    text-align: center;
+    margin: 2% 2%;
+    width: auto;
+    height: 50px;
+    background-color: transparent;
+    color: white;
+    text-transform: uppercase;
+    font: $button-font;
+    border: 3px dotted white;
+    &:hover {
+        cursor: pointer;
+        animation: blink .5s infinite alternate;
+
+    }
+}
+
+.enemy-sprite {
+    float: right;
+    width: 225px;
+    border: 1px solid blue;
+    transform: scaleX(-1);
+}
+
+@-webkit-keyframes attack {
+    0% {
+        transform: translateX(-30px);
+    }
+    25% {
+        transform: translateX(0px);
+    }
+    50% {
+        transform: translateX(440px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
+}
+
+@keyframes attack {
+    0% {
+        transform: translateX(-30px);
+    }
+    50% {
+        transform: translateX(440px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
+}
+
+@keyframes rotate {
+    from {
+        border: 3px dotted white;
+    }
+    to {
+        border: 3px dashed white;
+    }
+}
+
+@keyframes blink {
+    from {
+        color: white;
+    }
+    to {
+        color: black;
+    }
+
+}
