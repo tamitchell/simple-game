@@ -1,6 +1,8 @@
-let attackBtn = document.getElementById('attackbtn');
-let heroHealth = document.getElementById('heroHealth');
-let enemyHealth = document.getElementById('enemyHealth');
+const attackBtn = document.getElementById('attackbtn');
+
+const heroHealth = document.getElementById('healthHero').value;
+
+let enemyHealth = document.getElementById('healthEnemy').value;
 
 function soundBoard(src) {
     this.sound = document.createElement("audio");
@@ -13,13 +15,19 @@ function soundBoard(src) {
 
 //works but for some reason works on every other click
 attackBtn.onclick = function () {
+    //animation
     let moveCharacter = document.getElementById('hero');
     moveCharacter.classList.toggle('hero-attacking');
+
+    //sound-effect
 
     let attackSound = new soundBoard("strongpunch.mp3");
 
     attackSound.play();
 
-    enemyHealth.value -= 10;
+    //damage dealt to enemy
 
+    let damageAmt = document.getElementById('healthEnemy').value -= 50;
+
+    enemyHealth.innerHTML.value = damageAmt;
 }

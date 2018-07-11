@@ -33,7 +33,7 @@ body {
     flex-flow: column nowrap;
     justify-content: center;
     align-content: center;
-    background-image: url("https://vignette.wikia.nocookie.net/snk/images/9/95/Garougrantbglite.gif/revision/latest?cb=20100719080501");
+    background-image: url("https://i.pinimg.com/originals/3b/b0/1d/3bb01d1e5164c8271c32f51701a59deb.gif");
     /*Please tag artist*/
     background-position: center;
     background-size: cover;
@@ -49,17 +49,26 @@ body {
     border: 1px solid purple;
     height: 40%;
     width: 90%;
+    progress::-webkit-progress-bar {
+        /* Reset the default appearance */
+        -webkit-appearance: none;
+        appearance: none;
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 0;
+        padding: 0;
+    }
+    progress::-webkit-progress-value {
+        background-color: green;
+    }
     .health-gauge.hero[value] {
-        -webkit-appearance: progress-bar;
         float: left;
-        padding: .3em;
         width: 45%;
+
     }
     .health-gauge.enemy[value] {
-        -webkit-appearance: progress-bar;
         float: right;
-        padding: .3em;
         width: 45%;
+        transform: scaleX(-1);
     }
 
 }
@@ -83,7 +92,6 @@ body {
 .hero {
     float: left;
     width: 200px;
-    border: 1px solid green;
 }
 
 .hero-attacking {
