@@ -13,8 +13,14 @@ function soundBoard(src) {
     }
 }
 
+
+//    attackEnemy(enemyReturnsAttack());
+
+let disableMoveset = document.querySelector('.container.controls').classList.add()
+
+
 //works but for some reason works on every other click
-attackBtn.onclick = function () {
+let attackEnemy = attackBtn.onclick = function (event, callback) {
     //animation
     let moveCharacter = document.getElementById('hero');
     moveCharacter.classList.toggle('hero-attacking');
@@ -30,35 +36,30 @@ attackBtn.onclick = function () {
     let enemyDamageAmt = document.getElementById('healthEnemy').value -= 50;
 
     enemyHealth.innerHTML.value = enemyDamageAmt;
-}
 
-//define enemy attacks
-function enemyAutoAttack() {
-    let moveCharacter = document.querySelector('#enemy');
-
-
-    moveCharacter.removeAttribute('src', 'https://i.imgur.com/yGp0EuO.gif');
-
-
-    moveCharacter.setAttribute('src', 'http://www.fightersgeneration.com/characters3/ryu-hcfk.gif');
-
-    moveCharacter.style.width = "400px";
-
-    moveCharacter.style.transform = "translateX(-100px)";
-
-    moveCharacter.style.transform = "scaleX(-1)"
-
-    let heroDamageAmt = document.getElementById('healthHero').value -= 150;
-
+    callback();
 }
 
 //enemy returns attack
-
 function enemyReturnsAttack() {
-    if (attackBtn.onclick === true) {
-        enemyAutoAttack();
+
+    enemyAutoAttack();
+
+
+    //define enemy attacks
+    function enemyAutoAttack() {
+
+        let moveCharacter = document.querySelector('#enemy');
+        moveCharacter.removeAttribute('src', 'https://i.imgur.com/yGp0EuO.gif');
+
+
+        moveCharacter.setAttribute('src', 'https://piskel-imgstore-b.appspot.com/img/1271386b-853b-11e8-859f-a1429c5c6181.gif');
+
+        moveCharacter.style.width = "500px";
+
+        moveCharacter.style.transform = "scaleX(-1)"
+
+        let heroDamageAmt = document.getElementById('healthHero').value -= 150;
+
     }
 }
-
-//debugger;
-enemyReturnsAttack();

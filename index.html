@@ -7,10 +7,6 @@
     <title>'Issa Start' A Study of Pokemon Mechanics</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <!-- Place favicon.ico in the root directory -->
-
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
@@ -39,13 +35,15 @@
 
     <div class="container controls">
 
-        <button id="attackbtn" class="herobtn" onclick="attack()">Attack</button>
+        <div class="disabled-control">
+            <button id="attackbtn" class="herobtn">Attack</button>
 
-        <button id="protect" class="herobtn" onclick="protect()">Protect</button>
+            <button id="protect" class="herobtn" onclick="protect()">Protect</button>
 
-        <button id="finalFlash" class="herobtn" onclick="attackFlash()">Final Flash</button>
+            <button id="finalFlash" class="herobtn" onclick="attackFlash()">Final Flash</button>
 
-        <button id="kamehameha" class="herobtn" onclick="attackKame()">Kamehameha</button>
+            <button id="kamehameha" class="herobtn" onclick="attackKame()">Kamehameha</button>
+        </div>
 
     </div>
     <script src="main.js"></script>
