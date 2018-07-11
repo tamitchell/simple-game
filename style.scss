@@ -33,7 +33,7 @@ body {
     flex-flow: column nowrap;
     justify-content: center;
     align-content: center;
-    background-image: url("https://data.whicdn.com/images/304075390/original.gif");
+    background-image: url("https://vignette.wikia.nocookie.net/snk/images/9/95/Garougrantbglite.gif/revision/latest?cb=20100719080501");
     /*Please tag artist*/
     background-position: center;
     background-size: cover;
@@ -49,19 +49,19 @@ body {
     border: 1px solid purple;
     height: 40%;
     width: 90%;
-    .health-gauge.hero {
-        margin: 0;
+    .health-gauge.hero[value] {
+        -webkit-appearance: progress-bar;
         float: left;
         padding: .3em;
-        background-color: green;
         width: 45%;
     }
-    .health-gauge.enemy {
+    .health-gauge.enemy[value] {
+        -webkit-appearance: progress-bar;
         float: right;
-        background-color: green;
-        padding: .5em;
+        padding: .3em;
         width: 45%;
     }
+
 }
 
 .container.fighters {
