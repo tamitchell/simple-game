@@ -27,18 +27,28 @@ attackBtn.onclick = function () {
 
     //damage dealt to enemy
 
-    let damageAmt = document.getElementById('healthEnemy').value -= 50;
+    let enemyDamageAmt = document.getElementById('healthEnemy').value -= 50;
 
-    enemyHealth.innerHTML.value = damageAmt;
+    enemyHealth.innerHTML.value = enemyDamageAmt;
 }
 
 //define enemy attacks
-function enemyAttackBtn() {
+function enemyAutoAttack() {
     let moveCharacter = document.querySelector('#enemy');
 
 
-    moveCharacter.removeAttribute('src', 'https://78.media.tumblr.com/tumblr_m3u9txydOt1rptf33o1_500.gif');
-    moveCharacter.setAttribute('src', 'http://mescollectionsmarvel.free.fr/Images/Gif%20sympa/Captainamerica/captitainamerica-5.gif');
+    moveCharacter.removeAttribute('src', 'https://i.imgur.com/yGp0EuO.gif');
+
+
+    moveCharacter.setAttribute('src', 'http://www.fightersgeneration.com/characters3/ryu-hcfk.gif');
+
+    moveCharacter.style.width = "400px";
+
+    moveCharacter.style.transform = "translateX(-100px)";
+
+    moveCharacter.style.transform = "scaleX(-1)"
+
+    let heroDamageAmt = document.getElementById('healthHero').value -= 150;
 
 }
 
@@ -46,8 +56,9 @@ function enemyAttackBtn() {
 
 function enemyReturnsAttack() {
     if (attackBtn.onclick === true) {
-        enemyAttackBtn();
+        enemyAutoAttack();
     }
 }
 
+//debugger;
 enemyReturnsAttack();
