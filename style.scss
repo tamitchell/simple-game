@@ -2,6 +2,7 @@
 1.center buttons
 2.add health guages
 3. Since there aren't enough gifs for each character animation each attack style will be pieced together using a sprite stylesheet and the steps() funciton in css
+4.add media query for attack animation so that when screen is a certain size characters don't pass each other
 */
 
 @import url('https://fonts.googleapis.com/css?family=VT323');
@@ -128,13 +129,13 @@ body {
 
 @-webkit-keyframes attack {
     0% {
-        transform: translateX(-30px);
+        transform: translateX(-30%);
     }
     25% {
         transform: translateX(0px);
     }
     50% {
-        transform: translateX(440px);
+        transform: translateX(90%);
     }
     100% {
         transform: translateX(0px);
@@ -143,10 +144,11 @@ body {
 
 @keyframes attack {
     0% {
-        transform: translateX(-30px);
+        transform: translateX(-30%);
     }
+
     50% {
-        transform: translateX(440px);
+        transform: translateX(400%);
     }
     100% {
         transform: translateX(0px);

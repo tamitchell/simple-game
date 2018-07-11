@@ -31,3 +31,23 @@ attackBtn.onclick = function () {
 
     enemyHealth.innerHTML.value = damageAmt;
 }
+
+//define enemy attacks
+function enemyAttackBtn() {
+    let moveCharacter = document.querySelector('#enemy');
+
+
+    moveCharacter.removeAttribute('src', 'https://78.media.tumblr.com/tumblr_m3u9txydOt1rptf33o1_500.gif');
+    moveCharacter.setAttribute('src', 'http://mescollectionsmarvel.free.fr/Images/Gif%20sympa/Captainamerica/captitainamerica-5.gif');
+
+}
+
+//enemy returns attack
+
+function enemyReturnsAttack() {
+    if (attackBtn.onclick === true) {
+        enemyAttackBtn();
+    }
+}
+
+enemyReturnsAttack();
