@@ -6,7 +6,7 @@ const gokuAttackSound  = new Audio("strongpunch.mp3");
 const powerKick = new Audio("straight_punch.mp3");
 let heroDamageAmt = document.getElementById('healthHero');
 let heroHealth  = document.getElementById('healthHero');
-let consoleLog = document.getElementById('')
+let consoleLog = document.getElementById('logger');
 
 
 
@@ -55,6 +55,7 @@ function attack () {
     gokuAttackSound.play();
     //damage dealt to enemy
     heroHealth = enemyHealth.value -= 50;
+    logStatus();
     console.log(heroHealth);
     enemyReturnsAttack();
     setTimeout(defaultGokuSprite, 2000);
@@ -100,8 +101,16 @@ function checkHp(){
     }
 }
 
-function battleStatus(){
-
+function logStatus(){
+    console.log('I ran')
+ switch (attackBtn) {
+     default:
+        consoleLog.innerHTML = "What will Goku do?";
+        break;
+      case 1:  
+        consoleLog.innerHTML = "Goku attacked!"
+        break;
+ }
 }
 
 function heroLost(){
