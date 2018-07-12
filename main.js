@@ -1,11 +1,28 @@
 const attackBtn   = document.getElementById('attackbtn');
 const goku        = document.getElementById('hero');
 const enemy       = document.getElementById('enemy');
-const heroHealth  = document.getElementById('healthHero');
 const enemyHealth = document.getElementById('healthEnemy');
-const heroDamageAmt = document.getElementById('healthHero');
 const gokuAttackSound  = new Audio("strongpunch.mp3");
 const powerKick = new Audio("straight_punch.mp3");
+let heroDamageAmt = document.getElementById('healthHero');
+let heroHealth  = document.getElementById('healthHero');
+
+
+
+//method by Dr Rudolf Winter @ http://users.aber.ac.uk/ruw/misc/swapimage.php
+// function toggleSprite(id, original, second){
+//     let imageName = id
+//     let imgSource = id.src;
+//     if(imgSource === original){
+//         imageName.removeAttribute('src', original);
+//         imageName.setAttribute('src', second);
+//     }
+//     else{
+//         imageName.removeAttribute('src', second);
+//         imageName.setAttribute('src', original);
+//     }
+// }
+
 
 function disableMoveset() {
     document.querySelector('.herobtn').disabled = true;
@@ -23,7 +40,7 @@ function defaultGokuSprite(){
 }
 
 function defaultEnemySprite(){
-    enemy.setAttribute('src', 'https://i.imgur.com/yGp0EuO.gif');
+    enemy.setAttribute('src', 'https://piskel-imgstore-b.appspot.com/img/f3a51f07-85fc-11e8-b892-a5b6aa53e4a8.gif');
     enemy.style.width = "190px";
 }
 
@@ -32,39 +49,71 @@ function attack () {
 
     disableMoveset();
     //animation
-    goku.classList.toggle('hero-attacking');
-    goku.setAttribute('src', 'https://piskel-imgstore-b.appspot.com/img/3a713d0c-85d7-11e8-935d-d5f6458d0832.gif');
-    goku.style.width = "280px"
+    // toggleSprite('hero','https://piskel-imgstore-b.appspot.com/img/28151c38-85d6-11e8-9ea2-d5f6458d0832.gif','https://piskel-imgstore-b.appspot.com/img/17a15dc0-85fa-11e8-8f8b-a5b6aa53e4a8.gif');
     //sound-effect
     gokuAttackSound.play();
-
     //damage dealt to enemy
-    enemyHealth.value -= 50;
-
-    // enemyHealth.innerHTML.value = enemyHealth.value;
-
+    heroHealth = enemyHealth.value -= 50;
+    console.log(heroHealth);
     enemyReturnsAttack();
-    setTimeout(defaultGokuSprite, 1000);
+    setTimeout(defaultGokuSprite, 2000);
 
 }
 
 //enemy returns attack
 function enemyReturnsAttack() {
 
-    setTimeout(enemyAutoAttack, 3000);
+    setTimeout(enemyAutoAttack, 5000);
 
 
     //define enemy attacks
     function enemyAutoAttack() {
 
-        enemy.removeAttribute('src', 'https://i.imgur.com/yGp0EuO.gif');
-
-        enemy.classList.toggle('enemy-attacking');
-        enemy.setAttribute('src', 'https://piskel-imgstore-b.appspot.com/img/dc880730-85df-11e8-b0d9-a3b55f4cb580.gif');
-        enemy.style.width = "500px";
- powerKick.play();
-        heroDamageAmt.value -= 150;
-        enableMoveset();
+        enemy.removeAttribute('src', 'https://piskel-imgstore-b.appspot.com/img/f3a51f07-85fc-11e8-b892-a5b6aa53e4a8.gif');
+        enemy.setAttribute('src', 'https://piskel-imgstore-b.appspot.com/img/5be59fa1-85fa-11e8-85ec-a5b6aa53e4a8.gif');
+        powerKick.play()
+        heroHealth = heroDamageAmt.value -= 550;
+        console.log(heroHealth);
+        
+        checkHp();
         setTimeout(defaultEnemySprite, 2000);
+        enableMoveset();
+
     }
+}
+
+//this function checks to see the value of each character's Health to determine whether or not one has reached 0HP
+function checkHp(){
+    console.log('Checking User HP...');
+    if(heroHealth.value <= 0){
+        console.log('This is working')
+        heroLost();
+    }
+    else if(enemyHealth.value <= 0){
+        enemyLost();
+    } 
+    else {
+        return
+    }
+}
+
+function battleStatus(){
+
+}
+
+function heroLost(){
+        disableMoveset();
+        console.log('Goku lost!');
+        console.log('Goku fainted!')
+        goku.classList.add('fainted');
+        gameReset();
+}
+
+function enemyLost(){
+    enemy.classList.add('fainted');
+    gameReset();
+}
+
+function gameReset(){
+
 }

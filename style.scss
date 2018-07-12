@@ -34,7 +34,7 @@ body {
     flex-flow: column nowrap;
     justify-content: center;
     align-content: center;
-    background-image: url("https://i.pinimg.com/originals/3b/b0/1d/3bb01d1e5164c8271c32f51701a59deb.gif");
+    background-image: url("https://theultralinx.com/.image/c_limit%2Ccs_srgb%2Cq_auto:good%2Cw_700/MTI5MDI0MjczNjc4NTA1MjM0/do2wa2j.webp");
     /*Please tag artist*/
     background-position: center;
     background-size: cover;
@@ -42,6 +42,7 @@ body {
     height: 40%;
     width: 80%;
     border: 1px solid red;
+    overflow-y:hidden;
 }
 
 .container.health-gauge {
@@ -147,9 +148,17 @@ body {
 
 .enemy-sprite {
     float: right;
-    height: 260px;
-    transform: scaleX(-1);
+    height: 240px;
 }
+
+.fainted{
+    animation: drop 1s linear;
+}
+
+@keyframes drop {
+    0%{transform:translatey(0px);}
+    100%{transform:translatey(2000px);}
+  }
 
 @-webkit-keyframes attack {
     0% {
