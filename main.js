@@ -6,6 +6,7 @@ const gokuAttackSound  = new Audio("strongpunch.mp3");
 const powerKick = new Audio("straight_punch.mp3");
 let heroDamageAmt = document.getElementById('healthHero');
 let heroHealth  = document.getElementById('healthHero');
+let consoleLog = document.getElementById('')
 
 
 
@@ -85,12 +86,14 @@ function enemyReturnsAttack() {
 //this function checks to see the value of each character's Health to determine whether or not one has reached 0HP
 function checkHp(){
     console.log('Checking User HP...');
-    if(heroHealth.value <= 0){
+
+    if(heroHealth <= 0){
         console.log('This is working')
-        heroLost();
+        setTimeout(heroLost, 5000)
     }
-    else if(enemyHealth.value <= 0){
-        enemyLost();
+
+    else if(enemyHealth <= 0){
+       setTimeout(enemyLost, 5000);
     } 
     else {
         return
@@ -110,6 +113,7 @@ function heroLost(){
 }
 
 function enemyLost(){
+    disableMoveset();
     enemy.classList.add('fainted');
     gameReset();
 }

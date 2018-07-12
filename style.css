@@ -106,7 +106,7 @@ body {
   text-align: center;
 }
 
-.container.console .logger {
+.container.console #logger {
   margin: 2em auto 2em auto;
   width: 50%;
   border: 1px solid white;
@@ -167,6 +167,10 @@ body {
 .fainted {
   -webkit-animation: drop 1s linear;
           animation: drop 1s linear;
+}
+
+.disappear {
+  display: none;
 }
 
 @-webkit-keyframes drop {
