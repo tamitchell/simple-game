@@ -104,8 +104,8 @@ body {
     float: left;
     width: 200px;
     border: 1px solid green;
-    -webkit-animation: attack 2s;
-    animation: attack 2s;
+    -webkit-animation: attack .5s;
+    animation: attack .5s;
 }
 
 .herobtn {
