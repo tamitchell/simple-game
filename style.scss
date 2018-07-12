@@ -39,8 +39,8 @@ body {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    height: 30%;
-    width: 100%;
+    height: 40%;
+    width: 80%;
     border: 1px solid red;
 }
 
@@ -82,16 +82,45 @@ body {
     height: 20%;
 }
 
+.container.console {
+    display: block;
+    margin: 0 auto;
+    width: 80%;
+    height:30%;
+    border: 3px dashed white;
+    h1 {
+        font: $button-font;
+        color: white;
+        text-transform: uppercase;
+        text-align: center;
+    }
+    .logger {
+        margin: 2em auto 2em auto;
+        width: 50%;
+        border: 1px solid white;
+    }
+}
+
 .container.controls {
     display: block;
     margin: 0 auto;
     width: 80%;
-    padding: 2em 1em;
-    border: 1px solid orange;
-    .disabled-control {
-        background-color: dimgray;
-        width: 100%;
-        height: 100%;
+    border: 3px dashed white;
+    .herobtn {
+        margin: 2% 2%;
+        text-align: center;
+        width: auto;
+        height: 50px;
+        background-color: transparent;
+        color: white;
+        text-transform: uppercase;
+        font: $button-font;
+        border: 3px dotted white;
+        &:hover {
+            cursor: pointer;
+            animation: blink .5s infinite alternate;
+    
+        }
     }
 }
 
@@ -108,27 +137,17 @@ body {
     animation: attack .5s;
 }
 
-.herobtn {
-    text-align: center;
-    margin: 2% 2%;
-    width: auto;
-    height: 50px;
-    background-color: transparent;
-    color: white;
-    text-transform: uppercase;
-    font: $button-font;
-    border: 3px dotted white;
-    &:hover {
-        cursor: pointer;
-        animation: blink .5s infinite alternate;
-
-    }
+.enemy-attacking{
+    float: right;
+    height: 260px;
+    transform: scaleX(-1);
+    -webkit-animation: enemy-attack 1s;
+    animation: enemy-attack 1s;
 }
 
 .enemy-sprite {
     float: right;
     height: 260px;
-    border: 1px solid blue;
     transform: scaleX(-1);
 }
 
@@ -136,12 +155,27 @@ body {
     0% {
         transform: translateX(-30%);
     }
-    25% {
+
+    50% {
+        transform: translateX(300%);
+    }
+    70%{transform: translateX(300%);}
+    80%{transform: translateX(300%);}
+    100% {
         transform: translateX(0px);
     }
-    50% {
-        transform: translateX(90%);
+}
+
+@-webkit-keyframes enemy-attack {
+    0% {
+        transform: translateX(-90%);
     }
+
+    50% {
+        transform: translateX(-100%);
+    }
+    70%{transform: translateX(-100%);}
+    80%{transform: translateX(-100%);}
     100% {
         transform: translateX(0px);
     }
@@ -153,8 +187,25 @@ body {
     }
 
     50% {
-        transform: translateX(400%);
+        transform: translateX(90%);
     }
+    70%{transform: translateX(90%);}
+    80%{transform: translateX(90%);}
+    100% {
+        transform: translateX(0px);
+    }
+}
+
+@keyframes enemy-attack {
+    0% {
+        transform: translateX(-30%);
+    }
+
+    50% {
+        transform: translateX(-90%);
+    }
+    70%{transform: translateX(-90%);}
+    80%{transform: translateX(-90%);}
     100% {
         transform: translateX(0px);
     }
