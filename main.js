@@ -21,6 +21,8 @@ const gokuAttackSound  = new Audio("strongpunch.mp3");
 const gokuAttackVoice  = new Audio("Goku_attack_yelp.mp3")
 const gokuProtectVoice = new Audio("goku_protect_grunt.mp3");
 const gokuProtectSound =     new Audio('protect_goku.mp3');
+const gokuSlamSound    = new Audio('goku_slam_attack.mp3');
+const gokuSlamVoice    = new Audio('goku_slam_voice.mp3');
 const powerKick   = new Audio("straight_punch.mp3");
 let controlBtn    = document.querySelectorAll('.herobtn');
 let heroDamageAmt = document.getElementById('healthHero');
@@ -44,7 +46,7 @@ function toggleSprite(sprite, src1, src2){
         sprite.src = src2
     }
     else{
-        sprite.src = src
+        sprite.src = src1
     }
     sprite.style.height = "220px";
 }
@@ -123,11 +125,12 @@ function slamDunk (id) {
     goku.style.height = "260px";
     goku.style.width = "260px";
 
-
     //sound-effect
+    gokuSlamVoice.play();
+    gokuSlamSound.play();
    
     //damage dealt to enemy
-    enemyHealth.value -= 450;
+    enemyHealth.value -= 850;
     logStatus("slambtn");
     console.log(enemyHealth);
     enemyReturnsAttack();
