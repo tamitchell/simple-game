@@ -23,7 +23,8 @@ const gokuProtectVoice = new Audio("goku_protect_grunt.mp3");
 const gokuProtectSound =     new Audio('protect_goku.mp3');
 const gokuSlamSound    = new Audio('goku_slam_attack.mp3');
 const gokuSlamVoice    = new Audio('goku_slam_voice.mp3');
-const powerKick   = new Audio("straight_punch.mp3");
+const powerKick   = new Audio("ryu_kick.mp3");
+const ryuKickVoice = new Audio("ryu_kick_voice.mp3");
 let controlBtn    = document.querySelectorAll('.herobtn');
 let heroDamageAmt = document.getElementById('healthHero');
 let heroHealth    = document.getElementById('healthHero');
@@ -34,7 +35,7 @@ const gokuProtect = 'https://piskel-imgstore-b.appspot.com/img/8439b4ab-8652-11e
 const gokuSlamDunk = 'https://piskel-imgstore-b.appspot.com/img/b2571ae3-86a9-11e8-8773-8bccf7076e95.gif';
 
 const ryuIdle     = 'https://piskel-imgstore-b.appspot.com/img/f3a51f07-85fc-11e8-b892-a5b6aa53e4a8.gif';
-const ryuKick     = 'https://piskel-imgstore-b.appspot.com/img/88afcc6b-8650-11e8-bfd7-5760cbc9b98b.gif';
+const ryuKick     = 'https://piskel-imgstore-b.appspot.com/img/5de4a854-86af-11e8-8e20-8bccf7076e95.gif';
 
 
 
@@ -112,7 +113,7 @@ function protect (id) {
     //damage dealt to enemy
     logStatus("protectbtn");
     console.log(enemyHealth);
-    enemyReturnsAttack(usedProtect);
+    enemyReturnsAttack();
     setTimeout(defaultGokuSprite, 800);
 
 }
@@ -143,12 +144,13 @@ function enemyReturnsAttack() {
 
     setTimeout(enemyAutoAttack, 3000);
 
-
+    
     //define enemy attacks
     function enemyAutoAttack() {
 
         toggleSprite(enemy, ryuIdle, ryuKick)
         powerKick.play()
+        ryuKickVoice.play();
         heroHealth = heroDamageAmt.value -= 550;
         console.log(heroHealth);
         
