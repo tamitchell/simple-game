@@ -25,6 +25,8 @@
 
 $button-font: 2em 'VT323',
 monospace;
+$battle-log: 20px 'VT323',
+monospace;
 
 
 body {
@@ -47,17 +49,16 @@ body {
     background-repeat: no-repeat;
     height: 40%;
     width: 80%;
-    border: 1px solid red;
-    overflow-y:hidden;
+    border: 2em solid black;
+    overflow-y: hidden;
 }
 
 .container.health-gauge {
     margin-top: 1em;
     align-self: center;
-    border: 1px solid purple;
     height: 40%;
     width: 90%;
-    progress::-webkit-progress-bar {
+    progress {
         /* Reset the default appearance */
         -webkit-appearance: none;
         appearance: none;
@@ -65,13 +66,19 @@ body {
         border-radius: 0;
         padding: 0;
     }
-    progress::-webkit-progress-value {
-        background-color: green;
+    progress::-webkit-progress-bar {
+        background-color: rgba(0, 0, 0, 0.1);
+        box-shadow: inset;
+
     }
-    .health-gauge.hero[value] {
+    progress::-webkit-progress-value {
+        background-color: lightgreen;
+        border: none;
+    }
+
+    .health-gauge.hero {
         float: left;
         width: 45%;
-
     }
     .health-gauge.enemy[value] {
         float: right;
@@ -84,7 +91,6 @@ body {
 .container.fighters {
     align-self: center;
     margin: 9em 0 1em 0;
-    border: 1px solid yellow;
     width: 90%;
     height: 20%;
 }
@@ -93,50 +99,53 @@ body {
     display: block;
     margin: 0 auto;
     width: 80%;
-    height:30%;
+    height: 40%;
     border: 3px dashed white;
     h1 {
         font: $button-font;
         color: white;
         text-transform: uppercase;
         text-align: center;
+        letter-spacing: 3px;
     }
     #logger {
-        margin: 2em auto 2em auto;
-        padding: 3em;
+        margin: 1em auto 1em auto;
+        padding: 2em;
         width: 50%;
         color: white;
-        font: $button-font;
-    
-    }
-}
+        font: $battle-log;
+        letter-spacing: 2px;
 
-.container.controls {
-    display: block;
-    margin: 0 auto;
-    width: 80%;
-    border: 3px dashed white;
-    .herobtn {
-        margin: 2% 2%;
-        text-align: center;
-        width: auto;
-        height: 50px;
-        background-color: transparent;
-        color: white;
-        text-transform: uppercase;
-        font: $button-font;
-        border: 3px dotted white;
-        &:hover {
-            cursor: pointer;
-            animation: blink .5s infinite alternate;
-    
+    }
+    .container.controls {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        margin: 2em auto;
+        width: 100%;
+        .herobtn {
+            align-self: center;
+            margin: 2% 2%;
+            text-align: center;
+            width: auto;
+            height: 50px;
+            background-color: transparent;
+            color: white;
+            text-transform: uppercase;
+            font: $button-font;
+            border: 3px dotted white;
+            &:hover {
+                cursor: pointer;
+                animation: blink .5s infinite alternate;
+
+            }
         }
     }
 }
 
 .hero {
     float: left;
-    width:30%;
+    width: 30%;
     min-width: 140px;
     max-width: 200px;
 }
@@ -149,7 +158,7 @@ body {
     animation: attack .5s;
 }
 
-.enemy-attacking{
+.enemy-attacking {
     float: right;
     height: 260px;
     transform: scaleX(-1);
@@ -159,27 +168,31 @@ body {
 
 .enemy-sprite {
     float: right;
-    height:30%;
+    height: 30%;
     max-height: 240px;
 }
 
-.fainted{
+.fainted {
     animation: drop 1s linear;
 }
 
-.disappear{
-    display:none;
+.disappear {
+    display: none;
 }
 
-.fade-moveset{
+.fade-moveset {
     opacity: 0.5;
-    cursor:not-allowed;
+    cursor: not-allowed;
 }
 
 @keyframes drop {
-    0%{transform:translatey(0px);}
-    100%{transform:translatey(2000px);}
-  }
+    0% {
+        transform: translatey(0px);
+    }
+    100% {
+        transform: translatey(2000px);
+    }
+}
 
 @-webkit-keyframes attack {
     0% {
@@ -189,8 +202,12 @@ body {
     50% {
         transform: translateX(300%);
     }
-    70%{transform: translateX(300%);}
-    80%{transform: translateX(300%);}
+    70% {
+        transform: translateX(300%);
+    }
+    80% {
+        transform: translateX(300%);
+    }
     100% {
         transform: translateX(0px);
     }
@@ -204,8 +221,12 @@ body {
     50% {
         transform: translateX(-100%);
     }
-    70%{transform: translateX(-100%);}
-    80%{transform: translateX(-100%);}
+    70% {
+        transform: translateX(-100%);
+    }
+    80% {
+        transform: translateX(-100%);
+    }
     100% {
         transform: translateX(0px);
     }
@@ -219,8 +240,12 @@ body {
     50% {
         transform: translateX(90%);
     }
-    70%{transform: translateX(90%);}
-    80%{transform: translateX(90%);}
+    70% {
+        transform: translateX(90%);
+    }
+    80% {
+        transform: translateX(90%);
+    }
     100% {
         transform: translateX(0px);
     }
@@ -234,8 +259,12 @@ body {
     50% {
         transform: translateX(-90%);
     }
-    70%{transform: translateX(-90%);}
-    80%{transform: translateX(-90%);}
+    70% {
+        transform: translateX(-90%);
+    }
+    80% {
+        transform: translateX(-90%);
+    }
     100% {
         transform: translateX(0px);
     }

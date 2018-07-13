@@ -15,11 +15,11 @@
 
         <div class="container health-gauge">
 
-            <progress class="health-gauge hero" id="healthHero" value="8000" max="8000">
+            <progress class="health-gauge hero" id="healthHero" value="10000" max="10000">Goku
                 </progress>
 
             <progress class="health-gauge enemy" id="healthEnemy" value="10000" max="10000">
-                
+              Ryu  
             </progress>
         </div>
 
@@ -38,12 +38,9 @@
             <h1>Battle Status</h1>
         </div>
         <div id="logger">
+            <p id="battleLog"></p>
         </div>
-    </div>
-
-    <!---Attack Bar-->
-
-    <div class="container controls">
+        <div class="container controls">
 
             <button id="attackbtn" class="herobtn" onclick="attack(this.id);">Attack</button>
 
@@ -52,8 +49,16 @@
             <button id="slambtn" class="herobtn" onclick="slamDunk(this.id)">Slam Dunk</button>
 
             <button id="kamehamehabtn" class="herobtn" onclick="attackKame(this.id)">Kamehameha</button>
+            <button id="music" class="herobtn" onclick="pausePlay()">Play/Pause</button>
 
+        </div>
+
+        <!-- <button id="music" class="herobtn">Play/Pause</button> -->
     </div>
+
+    <!---Attack Bar-->
+
+
     <script src="main.js"></script>
 </body>
 </html>
