@@ -18,14 +18,19 @@ const goku        = document.getElementById('hero');
 const enemy       = document.getElementById('enemy');
 const enemyHealth = document.getElementById('healthEnemy');
 const gokuAttackSound  = new Audio("strongpunch.mp3");
-const powerKick = new Audio("straight_punch.mp3");
+const gokuAttackVoice  = new Audio("Goku_attack_yelp.mp3")
+const gokuProtectVoice = new Audio("goku_protect_grunt.mp3");
+const gokuProtectSound =     new Audio('protect_goku.mp3');
+const powerKick   = new Audio("straight_punch.mp3");
 let controlBtn    = document.querySelectorAll('.herobtn');
 let heroDamageAmt = document.getElementById('healthHero');
 let heroHealth    = document.getElementById('healthHero');
 let consoleLog    = document.getElementById('logger');
-const gokuIdle = "https://piskel-imgstore-b.appspot.com/img/28151c38-85d6-11e8-9ea2-d5f6458d0832.gif";
-const gokuAttack = 'https://piskel-imgstore-b.appspot.com/img/d3d7c533-864e-11e8-a59c-5760cbc9b98b.gif';
+const gokuIdle    = "https://piskel-imgstore-b.appspot.com/img/28151c38-85d6-11e8-9ea2-d5f6458d0832.gif";
+const gokuAttack  = 'https://piskel-imgstore-b.appspot.com/img/d3d7c533-864e-11e8-a59c-5760cbc9b98b.gif';
 const gokuProtect = 'https://piskel-imgstore-b.appspot.com/img/8439b4ab-8652-11e8-a5a6-5760cbc9b98b.gif';
+const gokuSlamDunk = 'https://piskel-imgstore-b.appspot.com/img/b2571ae3-86a9-11e8-8773-8bccf7076e95.gif';
+
 const ryuIdle     = 'https://piskel-imgstore-b.appspot.com/img/f3a51f07-85fc-11e8-b892-a5b6aa53e4a8.gif';
 const ryuKick     = 'https://piskel-imgstore-b.appspot.com/img/88afcc6b-8650-11e8-bfd7-5760cbc9b98b.gif';
 
@@ -59,12 +64,15 @@ function enableMoveset() {
 
 function defaultGokuSprite(){
     goku.setAttribute('src',gokuIdle);
-    goku.style.width = "220px";
+    goku.style.width = "190px";
+    goku.style.height = "220px";
+
 }
 
 function defaultEnemySprite(){
     enemy.setAttribute('src', ryuIdle);
     enemy.style.width = "190px";
+    enemy.style.height = "200px";
 }
 
 //works but for some reason works on every other click
@@ -73,14 +81,17 @@ function attack (id) {
     disableMoveset();
     //animation
     toggleSprite(goku,gokuIdle, gokuAttack);
-    goku.style.width = "220px";
+    goku.style.height = "250px";
+    goku.style.width = "250px";
 
     //sound-effect
+
+    gokuAttackVoice.play();
     gokuAttackSound.play();
     //damage dealt to enemy
-    enemyHealth.value -= 50;
+    enemyHealth.value -= 100;
     logStatus("attackbtn");
-    console.log(heroHealth);
+    console.log(enemyHealth);
     enemyReturnsAttack();
     setTimeout(defaultGokuSprite, 800);
 
@@ -94,10 +105,31 @@ function protect (id) {
     goku.style.width = "220px";
 
     //sound-effect
-    new Audio('protect_goku.mp3').play();
+    gokuProtectSound.play();
+    gokuProtectVoice.play();
     //damage dealt to enemy
-    logStatus("attackbtn");
-    console.log(heroHealth);
+    logStatus("protectbtn");
+    console.log(enemyHealth);
+    enemyReturnsAttack(usedProtect);
+    setTimeout(defaultGokuSprite, 800);
+
+}
+
+function slamDunk (id) {
+    // console.log(typeof(id))
+    disableMoveset();
+    //animation
+    toggleSprite(goku,gokuIdle, gokuSlamDunk);
+    goku.style.height = "260px";
+    goku.style.width = "260px";
+
+
+    //sound-effect
+   
+    //damage dealt to enemy
+    enemyHealth.value -= 450;
+    logStatus("slambtn");
+    console.log(enemyHealth);
     enemyReturnsAttack();
     setTimeout(defaultGokuSprite, 800);
 
@@ -140,9 +172,9 @@ function checkHp(){
     }
 }
 
-function whichButtonClicked(){
+// function whichButtonClicked(){
 
-}
+// }
 
 function logStatus(e){
     let paragraph = document.createElement("p");
@@ -153,8 +185,8 @@ function logStatus(e){
       case 'protectBtn':
         paragraph.innerHTML.createTextNode = "Goku protect himself!"
         break;
-      case 'finalFlashBtn' :
-        paragraph.innerHTML.createTextNode = "Goku used Final Flash!!"
+      case 'slamBtn' :
+        paragraph.innerHTML.createTextNode = "Goku used Slam Dunk!!"
         break;
       case 'kamehamehabtn':
         paragraph.innerHTML.createTextNode = "Goku used KamehameHAAAAA!!!"
