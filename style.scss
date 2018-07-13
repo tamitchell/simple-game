@@ -102,9 +102,13 @@ body {
         text-align: center;
     }
     #logger {
-        margin: 2em auto 2em auto;
+        #paragraph {
+            margin: 2em auto 2em auto;
+        padding: 3em;
         width: 50%;
-        border: 1px solid white;
+        color: white;
+        font: $button-font;
+        }
     }
 }
 
@@ -133,7 +137,14 @@ body {
 
 .hero {
     float: left;
-    width: 200px;
+    background-image: url('https://piskel-imgstore-b.appspot.com/img/28151c38-85d6-11e8-9ea2-d5f6458d0832.gif');
+    background-size: contain;
+    background-position:center;
+    border: 1px solid yellowgreen;
+    width:200px;
+    height:200px;
+    min-width: 140px;
+    max-width: 200px;
 }
 
 .hero-attacking {
@@ -154,7 +165,8 @@ body {
 
 .enemy-sprite {
     float: right;
-    height: 240px;
+    height:30%;
+    max-height: 240px;
 }
 
 .fainted{

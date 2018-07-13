@@ -38,7 +38,7 @@
             <h1>Battle Status</h1>
         </div>
         <div id="logger">
-            stuff
+           <p id="paragraph">Attack</p>
         </div>
     </div>
 
@@ -46,13 +46,13 @@
 
     <div class="container controls">
 
-            <button id="attackbtn" class="herobtn" onclick="attack();">Attack</button>
+            <button id="attackbtn" class="herobtn" onclick="attack(this.id);">Attack</button>
 
-            <button id="protectbtn" class="herobtn" onclick="protect()">Protect</button>
+            <button id="protectbtn" class="herobtn" onclick="protect(this.id)">Protect</button>
 
-            <button id="finalFlashbtn" class="herobtn" onclick="attackFlash()">Final Flash</button>
+            <button id="finalFlashbtn" class="herobtn" onclick="attackFlash(this.id)">Final Flash</button>
 
-            <button id="kamehamehabtn" class="herobtn" onclick="attackKame()">Kamehameha</button>
+            <button id="kamehamehabtn" class="herobtn" onclick="attackKame(this.id)">Kamehameha</button>
 
     </div>
     <script src="main.js"></script>
