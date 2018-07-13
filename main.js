@@ -4,9 +4,11 @@ const enemy       = document.getElementById('enemy');
 const enemyHealth = document.getElementById('healthEnemy');
 const gokuAttackSound  = new Audio("strongpunch.mp3");
 const powerKick = new Audio("straight_punch.mp3");
+let controlBtn    = document.querySelectorAll('.herobtn');
 let heroDamageAmt = document.getElementById('healthHero');
-let heroHealth  = document.getElementById('healthHero');
-let consoleLog = document.getElementById('logger');
+let heroHealth    = document.getElementById('healthHero');
+let consoleLog    = document.getElementById('logger');
+
 
 
 
@@ -26,7 +28,8 @@ let consoleLog = document.getElementById('logger');
 
 
 function disableMoveset() {
-    document.querySelector('.herobtn').disabled = true;
+    controlBtn.disabled = true;
+    // controlBtn.classList.add('fade-moveset');
 }
 
 function enableMoveset() {
@@ -89,20 +92,18 @@ function checkHp(){
     console.log('Checking User HP...');
 
     if(heroHealth <= 0){
-        console.log('This is working')
-        setTimeout(heroLost, 5000)
+        setTimeout(heroLost, 4000)
     }
 
     else if(enemyHealth <= 0){
-       setTimeout(enemyLost, 5000);
+       setTimeout(enemyLost, 4000);
     } 
     else {
-        return
+        return console.log('So good so far...');
     }
 }
 
 function logStatus(){
-    console.log('I ran')
  switch (attackBtn) {
      default:
         consoleLog.innerHTML = "What will Goku do?";
@@ -113,11 +114,12 @@ function logStatus(){
  }
 }
 
-function heroLost(){
+function heroLost(event){
         disableMoveset();
         console.log('Goku lost!');
         console.log('Goku fainted!')
         goku.classList.add('fainted');
+        event.preventDefault();
         gameReset();
 }
 
