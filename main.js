@@ -101,7 +101,7 @@ async function attack() {
   //damage dealt to enemy
   battleLog("Goku Attacks");
   await sleep(1000);
-  enemyHealth.value -= 350;
+  enemyHealth.value -= 1050;
   setHeroSprite(gokuIdle);
   enemyReturnsAttack();
 }
@@ -114,7 +114,7 @@ async function protect(id) {
     //damage dealt to enemy
     battleLog("Goku Protects");
     await sleep(1000);
-    enemyHealth.value -= 350;
+    enemyHealth.value -= 1350;
     setHeroSprite(gokuIdle);
     enemyReturnsAttack();
 }
@@ -127,7 +127,7 @@ async function slamDunk(id) {
     //damage dealt to enemy
     battleLog("Goku Slam Dunks");
     await sleep(1000);
-    enemyHealth.value -= 350;
+    enemyHealth.value -= 1350;
     setHeroSprite(gokuIdle);
     enemyReturnsAttack();
 }
@@ -140,7 +140,7 @@ async function enemyReturnsAttack() {
   ryuKickVoice.play();
   console.log(heroHealth);
   await sleep(1000);
-  heroHealth.value -= 550;
+  heroHealth.value -= 1050;
   setEnemySprite(ryuIdle);
   checkHp();
   // setTimeout(, 2000);
