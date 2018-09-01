@@ -1,4 +1,4 @@
-# [Goku vs Ryu: A Study of Turned-based RPG and Pokemon Mechanics](tamitchell.github.io/simple-game)
+# [Goku vs Ryu: A Study of Turned-based RPG and Pokemon Mechanics](https://tamitchell.github.io/simple-game)
 
 The objective of this project was the study and later implement the game theory and logic of Gamefreak's Pokemon franchise using character sprites such as Son Goku from Akira Toriyama's Dragon Ball Z and Ryu from Takashi Nishiyama's Street Fighter series. This study was done for educational purposes only and nothing has been used to make a profit or sale.  
 
