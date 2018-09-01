@@ -12,224 +12,167 @@
 DONE:
 1.toggle sprite images
 */
-const battleLog = document.getElementById('battleLog');
-const goku = document.getElementById('hero');
-const enemy = document.getElementById('enemy');
-const enemyHealth = document.getElementById('healthEnemy');
-const backgroundSong = new Audio ("jiren-theme-8bit.mp3");
-const gokuAttackSound = new Audio("strongpunch.mp3");
-const gokuAttackVoice = new Audio("Goku_attack_yelp.mp3")
-const gokuProtectVoice = new Audio("goku_protect_grunt.mp3");
-const gokuProtectSound = new Audio('protect_goku.mp3');
-const gokuSlamSound = new Audio('goku_slam_attack.mp3');
-const gokuSlamVoice = new Audio('goku_slam_voice.mp3');
-const powerKick = new Audio("ryu_kick.mp3");
-const ryuKickVoice = new Audio("ryu_kick_voice.mp3");
-const musicToggle = document.getElementById('music');
-let controlBtn = document.querySelectorAll('.herobtn');
-let heroDamageAmt = document.getElementById('healthHero');
-let heroHealth = document.getElementById('healthHero');
-let consoleLog = document.getElementById('logger');
-const gokuIdle = "https://piskel-imgstore-b.appspot.com/img/28151c38-85d6-11e8-9ea2-d5f6458d0832.gif";
-const gokuAttack = 'https://piskel-imgstore-b.appspot.com/img/d3d7c533-864e-11e8-a59c-5760cbc9b98b.gif';
-const gokuProtect = 'https://piskel-imgstore-b.appspot.com/img/8439b4ab-8652-11e8-a5a6-5760cbc9b98b.gif';
-const gokuSlamDunk = 'https://piskel-imgstore-b.appspot.com/img/b2571ae3-86a9-11e8-8773-8bccf7076e95.gif';
 
-const ryuIdle = 'https://piskel-imgstore-b.appspot.com/img/f3a51f07-85fc-11e8-b892-a5b6aa53e4a8.gif';
-const ryuKick = 'https://piskel-imgstore-b.appspot.com/img/5de4a854-86af-11e8-8e20-8bccf7076e95.gif';
+const hero = document.getElementById("hero");
+const heroHealth = document.getElementById("healthHero");
 
-function pausePlay(){
-   
+const enemy = document.getElementById("enemy");
+const enemyHealth = document.getElementById("healthEnemy");
 
-}
+// Sound
+const sound = "./media/sound/";
+const backgroundSong = new Audio(sound + "jiren-theme-8bit.mp3");
 
-window.onload = playTheme();
+const gokuAttackSound = new Audio(sound + "strongpunch.mp3");
+const gokuAttackVoice = new Audio(sound + "Goku_attack_yelp.mp3");
+const gokuProtectSound = new Audio(sound + "protect_goku.mp3");
+const gokuProtectVoice = new Audio(sound + "goku_protect_grunt.mp3");
+const gokuSlamSound = new Audio(sound + "goku_slam_attack.mp3");
+const gokuSlamVoice = new Audio(sound + "goku_slam_voice.mp3");
 
+const ryuKickAttack = new Audio(sound + "ryu_kick.mp3");
+const ryuKickVoice = new Audio(sound + "ryu_kick_voice.mp3");
 
-function playTheme(){
-    backgroundSong.play();
+// Images/GIFs
+const gifBaseUrl = "https://piskel-imgstore-b.appspot.com/img/";
+
+const gokuIdle = gifBaseUrl + "28151c38-85d6-11e8-9ea2-d5f6458d0832.gif";
+const gokuAttack = gifBaseUrl + "d3d7c533-864e-11e8-a59c-5760cbc9b98b.gif";
+const gokuProtect = gifBaseUrl + "8439b4ab-8652-11e8-a5a6-5760cbc9b98b.gif";
+const gokuSlamDunk = gifBaseUrl + "b2571ae3-86a9-11e8-8773-8bccf7076e95.gif";
+
+const ryuIdle = gifBaseUrl + "f3a51f07-85fc-11e8-b892-a5b6aa53e4a8.gif";
+const ryuKick = gifBaseUrl + "5de4a854-86af-11e8-8e20-8bccf7076e95.gif";
+
+// Logger/Messages
+const battleLog = msg => (document.getElementById("battleLog").innerHTML = msg);
+const resetLog = () => battleLog("What will Goku do?");
+
+// Buttons
+let allBtn = Array.from(document.querySelectorAll(".herobtn"));
+
+window.onload = () => {
+  backgroundSong.loop = true;
+  backgroundSong.play();
+  enemy.style.height = "220px";
+  hero.style.height = "220px";
+};
+
+function pausePlay() {
+  if (backgroundSong.paused) backgroundSong.play();
+  else backgroundSong.pause();
 }
 
 //method by Dr Rudolf Winter @ http://users.aber.ac.uk/ruw/misc/swapimage.php
 function toggleSprite(sprite, src1, src2) {
-    // let sprite = document.getElementById(id);
-    let spriteSrc = sprite.src;
-    if (spriteSrc === src1) {
-        sprite.src = src2
-    } else {
-        sprite.src = src1
-    }
-    sprite.style.height = "220px";
-}
-
-function resetLog() {
-    battleLog.innerHTML = "What will Goku do?";
+  // let sprite = document.getElementById(id);
+  let spriteSrc = sprite.src;
+  if (spriteSrc === src1) {
+    sprite.src = src2;
+  } else {
+    sprite.src = src1;
+  }
+  sprite.style.height = "220px";
 }
 
 function disableMoveset() {
-    controlBtn.disabled = true;
-    // controlBtn.classList.add('fade-moveset');
+  allBtn.map(x => {
+    x.disabled = true;
+    x.classList.add("fade-moveset");
+  });
 }
 
 function enableMoveset() {
-    // document.querySelector('.herobtn').disabled = false;
-    controlBtn.disabled = false;
-
-
+  allBtn.map(x => {
+    x.disabled = false;
+    x.classList.remove("fade-moveset");
+  });
 }
 
-function defaultGokuSprite() {
-    goku.setAttribute('src', gokuIdle);
-    goku.style.width = "190px";
-    goku.style.height = "220px";
-
-}
-
-function defaultEnemySprite() {
-    enemy.setAttribute('src', ryuIdle);
-    enemy.style.width = "190px";
-    enemy.style.height = "200px";
-}
+setHeroSprite = state => hero.setAttribute("src", state);
+setEnemySprite = state => enemy.setAttribute("src", state);
 
 //works but for some reason works on every other click
-function attack(id) {
-    // console.log(typeof(id))
-    disableMoveset();
-    //animation
-    toggleSprite(goku, gokuIdle, gokuAttack);
-    goku.style.height = "250px";
-    goku.style.width = "250px";
-
-    //sound-effect
-
-    gokuAttackVoice.play();
-    gokuAttackSound.play();
-    //damage dealt to enemy
-    enemyHealth.value -= 350;
-    logStatus("attackbtn");
-    console.log(enemyHealth);
-    enemyReturnsAttack();
-    setTimeout(defaultGokuSprite, 800);
-
+async function attack() {
+  disableMoveset();
+  setHeroSprite(gokuAttack);
+  gokuAttackVoice.play();
+  gokuAttackSound.play();
+  //damage dealt to enemy
+  battleLog("Goku Attacks");
+  await sleep(1000);
+  enemyHealth.value -= 350;
+  setHeroSprite(gokuIdle);
+  enemyReturnsAttack();
 }
 
-function protect(id) {
-    // console.log(typeof(id))
+async function protect(id) {
     disableMoveset();
-    //animation
-    toggleSprite(goku, gokuIdle, gokuProtect);
-    goku.style.width = "220px";
-
-    //sound-effect
+    setHeroSprite(gokuProtect);
     gokuProtectSound.play();
     gokuProtectVoice.play();
     //damage dealt to enemy
-    logStatus("protectbtn");
-    console.log(enemyHealth);
+    battleLog("Goku Protects");
+    await sleep(1000);
+    enemyHealth.value -= 350;
+    setHeroSprite(gokuIdle);
     enemyReturnsAttack();
-    setTimeout(defaultGokuSprite, 800);
-
 }
 
-function slamDunk(id) {
-    // console.log(typeof(id))
+async function slamDunk(id) {
     disableMoveset();
-    //animation
-    toggleSprite(goku, gokuIdle, gokuSlamDunk);
-    goku.style.height = "260px";
-    goku.style.width = "260px";
-
-    //sound-effect
-    gokuSlamVoice.play();
+    setHeroSprite(gokuSlamDunk);
     gokuSlamSound.play();
-
+    gokuSlamVoice.play();
     //damage dealt to enemy
-    enemyHealth.value -= 1000;
-    logStatus("slambtn");
-    console.log(enemyHealth);
+    battleLog("Goku Slam Dunks");
+    await sleep(1000);
+    enemyHealth.value -= 350;
+    setHeroSprite(gokuIdle);
     enemyReturnsAttack();
-    setTimeout(defaultGokuSprite, 800);
-
 }
 
 //enemy returns attack
-function enemyReturnsAttack() {
-
-    setTimeout(enemyAutoAttack, 2000);
-
-
-    //define enemy attacks
-    function enemyAutoAttack() {
-
-        toggleSprite(enemy, ryuIdle, ryuKick)
-        powerKick.play()
-        ryuKickVoice.play();
-        heroHealth = heroDamageAmt.value -= 550;
-        console.log(heroHealth);
-
-        checkHp();
-        setTimeout(defaultEnemySprite, 2000);
-        enableMoveset();
-
-    }
+async function enemyReturnsAttack() {
+  await sleep(1000);
+  setEnemySprite(ryuKick);
+  ryuKickAttack.play();
+  ryuKickVoice.play();
+  console.log(heroHealth);
+  await sleep(1000);
+  heroHealth.value -= 550;
+  setEnemySprite(ryuIdle);
+  checkHp();
+  // setTimeout(, 2000);
+  enableMoveset();
 }
 
 //this function checks to see the value of each character's Health to determine whether or not one has reached 0HP
-function checkHp() {
-    console.log('Checking User HP...');
+async function checkHp() {
+  console.log("Checking User HP...");
 
-    if (heroHealth <= 0) {
-        setTimeout(heroLost, 1000)
-    } else if (enemyHealth <= 0) {
-        setTimeout(enemyLost, 1000);
-    } else {
-        return console.log('So good so far...');
-    }
-}
-
-// function whichButtonClicked(){
-
-// }
-
-function logStatus(e) {
-    switch (e) {
-        case 'attackbtn':
-            battleLog.innerHTML = "Goku attacked!";
-            break;
-        case 'protectbtn':
-            battleLog.innerHTML = "Goku protect himself!"
-            break;
-        case 'slambtn':
-            battleLog.innerHTML = "Goku used Slam Dunk!!"
-            break;
-        case 'kamehamehabtn':
-            battleLog.innerHTML = "Goku used KamehameHAAAAA!!!"
-            break;
-        default:
-            battleLog.innerHTML = "huh?";
-            break;
-    };
-
-    //    setTimeout(resetLog(), 5000);
-
+  if (heroHealth <= 0) {
+    await sleep(1000);
+    heroLost();
+  } else if (enemyHealth <= 0) {
+    await sleep(1000);
+    heroLost();
+  } else {
+    return console.log("So good so far...");
+  }
 }
 
 function heroLost() {
-    disableMoveset();
-    battleLog.innerHTML = 'Goku lost!';
-    battleLog.innerHTML = 'Goku fainted!';
-    goku.classList.add('fainted');
-    gameReset();
+  disableMoveset();
+  battleLog("Goku fainted!");
+  hero.classList.add("fainted");
 }
 
 function enemyLost() {
-    disableMoveset();
-    battleLog.innerHTML = 'Ryu lost!';
-    battleLog.innerHTML = 'Ryu fainted!';
-    enemy.classList.add('fainted');
-    gameReset();
+  disableMoveset();
+  battleLog("Ryu fainted!");
+  enemy.classList.add("fainted");
 }
 
-function gameReset() {
-
-}
+sleep = milliSeconds =>
+  new Promise(resolve => setTimeout(resolve, milliSeconds));
