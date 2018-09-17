@@ -72,22 +72,9 @@ function resetGame() {
 
 The above was my MVP (Minimal Viable Project)
 
-### Seeing Output and Hitting Bumps
-
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
 ## Deployment
 
 This was deployed on with gh-pages, but after refactoring it will be deployed to Heroku.
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Versioning
 
@@ -96,8 +83,6 @@ I used [Github](http://github.com/) for versioning. For the versions available, 
 ## Authors
 
 * **Tasha Mitchell** - If you are interested in seeing more of my work, you can view my portfolio - [Tasha Mitchell](www.tamitchell.github.io)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
 ## Acknowledgments
 
